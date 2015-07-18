@@ -1,0 +1,3 @@
+import systemtrade
+
+systemtrade.main()
