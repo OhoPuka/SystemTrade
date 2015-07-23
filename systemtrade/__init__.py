@@ -7,7 +7,7 @@ import execution_handler as execute
 import backtest as test
 
 def main():
-    csv_dir = "D:\\Works\\Trading System\\04) System Development\\20150711_Three Companies Backtesting\\data\\"
+    csv_dir = "..\\..\\data\\"
     symbol_list = ['BBL']
     initial_capital = 100000.0
     start_date = datetime.datetime(1992, 1, 2, 0, 0, 0)
@@ -22,7 +22,7 @@ def main():
                         data.HistoricCSVDataHandler, 
                         execute.SimulatedExecutionHandler, 
                         port.EqualWeightedPortfolio, 
-                        strategy.MovingAverageCrossStrategy, 
+                        strategy.SimpleMovingAverageCrossStrategy, 
                         periods, 
                         heartbeat,
                         header_format="mine", 

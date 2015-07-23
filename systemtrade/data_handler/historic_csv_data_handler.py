@@ -49,7 +49,7 @@ class HistoricCSVDataHandler(DataHandler):
         for s in self.symbol_list:
             # Load the CSV file with no header information, indexed on date
             self.symbol_data[s] = pd.io.parsers.read_csv(
-                                      os.path.join(self.csv_dir, '%s.csv' % s),
+                                      os.path.join(os.path.dirname(__file__), self.csv_dir + '%s.csv' % s),
                                       header=0, index_col=0, parse_dates=True,
                                       names=self.header_names
                                   ).sort()
