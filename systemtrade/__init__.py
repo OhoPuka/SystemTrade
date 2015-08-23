@@ -22,7 +22,7 @@ def main():
                         data.HistoricCSVDataHandler, 
                         execute.SimulatedExecutionHandler, 
                         port.EqualWeightedPortfolio, 
-                        strategy.MACDStrategy, 
+                        strategy.NewHighStrategy, 
                         periods, 
                         heartbeat,
                         header_format="mine", 
