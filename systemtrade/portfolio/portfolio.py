@@ -165,9 +165,9 @@ class Portfolio(object):
         fill_cost = self.bars.get_latest_bar_value(fill.symbol, "close")
         cost = fill_dir * fill_cost * fill.quantity
         self.current_holdings[fill.symbol] += cost
-        self.current_holdings['commission'] += fill.commission
-        self.current_holdings['cash'] -= (cost + fill.commission)
-        self.current_holdings['total'] -= (cost + fill.commission)
+        self.current_holdings['commission'] += (fill.commission * abs(cost))
+        self.current_holdings['cash'] -= (cost + (fill.commission * abs(cost)))
+        self.current_holdings['total'] -= (cost + (fill.commission * abs(cost)))
 
     def update_fill(self, event):
         """

@@ -4,3 +4,4 @@ from sma_cross_strategy import SimpleMovingAverageCrossStrategy
 from ema_cross_strategy import ExponentialMovingAverageCrossStrategy
 from channel_breakout_strategy import ChannelBreakoutStrategy
 from momentum_strategy import MomentumStrategy
+from macd_strategy import MACDStrategy

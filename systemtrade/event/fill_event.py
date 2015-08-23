@@ -8,7 +8,7 @@ class FillEvent(Event):
     the commission of the trade from the brokerage.
     """
     def __init__(self, timeindex, symbol, exchange, quantity, 
-                 direction, fill_cost, commission=None):
+                 direction, fill_cost, commission=0.001578 * 1.07):
         """
         Initialises the FillEvent object. Sets the symbol, exchange,
         quantity, direction, cost of fill and an optional 
@@ -34,12 +34,15 @@ class FillEvent(Event):
         self.quantity = quantity
         self.direction = direction
         self.fill_cost = fill_cost
+        self.commission = commission
 
         # Calculate commission
+        """
         if commission is None:
             self.commission = self.calculate_ib_commission()
         else:
             self.commission = commission
+        """
 
     def calculate_ib_commission(self):
         """
@@ -51,9 +54,11 @@ class FillEvent(Event):
         Based on "US API Directed Orders":
         https://www.interactivebrokers.com/en/index.php?f=commission&p=stocks2
         """
+        
         full_cost = 1.3
         if self.quantity <= 500:
             full_cost = max(1.3, 0.013 * self.quantity)
         else: # Greater than 500
             full_cost = max(1.3, 0.008 * self.quantity)
         return full_cost
+        
